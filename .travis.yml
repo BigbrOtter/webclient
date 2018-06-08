@@ -9,6 +9,8 @@ dist: trusty
  
 addons:
  chrome: stable
+ sonarqube:
+ -  organization: "bigbrotter-01"
     
 branches:
  only:
@@ -21,3 +23,4 @@ before_script:
 
 script:
   - ng test
+  - sonar-scanner
