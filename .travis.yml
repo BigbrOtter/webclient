@@ -10,7 +10,7 @@ dist: trusty
 addons:
  chrome: stable
  sonarcloud:
- -  organization: "bigbrotter-01"
+  organization: "bigbrotter-01"
     
 branches:
  only:
