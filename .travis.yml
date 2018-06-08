@@ -15,5 +15,6 @@ script:
   - ng test
 
 after_success:
+  - ng serve
 
 notifications:
