@@ -1,8 +1,9 @@
 export class Person{
     name: string;
     id: number;
-    address: string;
-    email: string;
+    slogan: string;
+    avatar: File;
+    status: number;
 
     constructor(){
     }
