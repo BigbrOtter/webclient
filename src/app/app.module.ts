@@ -7,16 +7,20 @@ import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { DashComponent } from './dash/dash.component';
+import { GridsterModule } from 'angular-gridster2';
+import { StreamComponent } from './stream/stream.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    DashComponent
+    DashComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,
+    GridsterModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,

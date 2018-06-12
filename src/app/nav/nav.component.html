@@ -1,20 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport="true"
-    [attr.role]="dialog"
-    [mode]="side"
-    [opened]="false">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
-
-  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      
-
-      <mat-nav-list>
-          <span>Application Title</span>
+      <mat-nav-list class="list">
+         <a mat-list-item href="#"><span>Application Title</span> </a>
         <a mat-list-item href="#">Link 1</a>
         <a mat-list-item href="#">Link 2</a>
         <a mat-list-item href="#">Link 3</a>
