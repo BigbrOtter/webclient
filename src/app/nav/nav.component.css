@@ -2,8 +2,18 @@
   float:left;
 }
 
-.list span{
-  font:bold;
+.list span {
+  font: bold;
   color: white;
   font-size: 20px;
+}
+
+.title{
+
+  float:left;
+}
+
+.me{
+
+  float:right;
 }

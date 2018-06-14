@@ -1,10 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\e2e",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\classes"
+    "\\src\\app\\dash",
+    "\\src\\app\\nav",
+    "\\src\\app\\profile",
+    "\\src\\app\\stream"
   ],
-  "SelectedNode": "\\src\\app\\classes\\certificateHandler.ts",
+  "SelectedNode": "\\src\\app\\nav\\nav.component.ts",
   "PreviewInSolutionExplorer": false
 }

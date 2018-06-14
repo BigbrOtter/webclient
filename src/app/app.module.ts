@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatDialog, MatDialogModule } from '@angular/material';
 import { DashComponent } from './dash/dash.component';
 import { GridsterModule } from 'angular-gridster2';
 import { StreamComponent } from './stream/stream.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { StreamComponent } from './stream/stream.component';
     AppComponent,
     NavComponent,
     DashComponent,
-    StreamComponent
+    StreamComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +32,11 @@ import { StreamComponent } from './stream/stream.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProfileComponent]
 })
 export class AppModule { }
