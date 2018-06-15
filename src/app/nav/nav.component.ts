@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, Inject, Input} from '@angular/core';
-=======
-import { Component} from '@angular/core';
->>>>>>> frontend_test
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
