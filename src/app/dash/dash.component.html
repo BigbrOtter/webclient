@@ -4,15 +4,10 @@
       <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content">
           <div class="vid" *ngIf="card.isVideoCard">
-            <app-stream></app-stream>
+            <app-stream [id]="card.title"></app-stream>
           </div>
           <div class="chat" *ngIf="!card.isVideoCard">
-            <h1>Chat</h1>
-            <ul>
-              <li *ngFor="let chat of chats">
-                {{chat.sender}}: {{chat.message}}
-              </li>
-            </ul>
+            <app-chat></app-chat>
           </div>
         </mat-card-content>
       </mat-card>

@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{data.id}}</h2>
+<mat-dialog-content>
+  <input matInput [(ngModel)]="data.src" placeholder="Favorite food" value="Test">
+ 
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.src" cdkFocusInitial color="primary">
+      Okays!
+    </button>
+    <button mat-button (click)="close()">
+      Cancel
+    </button>
+  </div>
