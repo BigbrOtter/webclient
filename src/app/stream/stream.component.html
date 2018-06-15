@@ -1,1 +1,9 @@
-<iframe width="100%" height="100%"  src="https://www.youtube.com/embed/rsZkGiTefLQ"></iframe>
+<button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="openDialog()">Select stream</button>
+        <button mat-menu-item (click)="test()">Remove</button>
+      </mat-menu>
+
+<iframe width="100%" height="100%"  [src] = "src" ></iframe>
