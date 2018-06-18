@@ -31,7 +31,6 @@ export class StreamComponent implements OnInit {
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
 
-    loadStream("Card 4");
   }
 
   test(){
@@ -53,9 +52,8 @@ export class StreamComponent implements OnInit {
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log("thing closed " + result);
-     // this.src = result;
-      this.ngOnInit();
+          // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
+    loadStream(result);
     });
   }
 
