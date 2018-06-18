@@ -1,6 +1,6 @@
-function loadStream(){
+function loadStream(id){
   if (flvjs.isSupported()) {
-      var videoElement = document.getElementById('videoElement');
+      var videoElement = document.getElementById(id);
       var flvPlayer = flvjs.createPlayer({
           type: 'flv',
           url: 'ws://145.49.34.4:8000/live/kevin.flv'

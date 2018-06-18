@@ -30,7 +30,8 @@ export class StreamComponent implements OnInit {
     console.log(this.id);
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
-    loadStream();
+
+    loadStream("Card 4");
   }
 
   test(){
