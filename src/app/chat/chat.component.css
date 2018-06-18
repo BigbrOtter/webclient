@@ -1,0 +1,8 @@
+.textBox{
+    overflow-y: auto;
+}
+
+.chatBox.li{
+    list-style: none;
+}
+

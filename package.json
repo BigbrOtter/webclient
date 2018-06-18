@@ -22,8 +22,12 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@types/crypto-js": "^3.1.40",
+    "@types/node-rsa": "^0.4.3",
     "angular-gridster2": "^6.0.5",
     "core-js": "^2.5.4",
+    "crypto-js": "^3.1.9-1",
+    "pidcrypt": "0.0.31",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

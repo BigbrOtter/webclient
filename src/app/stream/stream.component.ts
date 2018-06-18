@@ -23,13 +23,13 @@ export class StreamComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpTest:HttpclientService) { 
     this.comp = new ProfilebrowserComponent(dialog, this.id);
-    this.src = "";
+    //this.src = "";
   }
 
   ngOnInit() {
     console.log(this.id);
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src); 
-    this.src = this.url;
+    //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src); 
+    //this.src = this.url;
 
   }
 
@@ -53,7 +53,7 @@ export class StreamComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       console.log("thing closed " + result);
-      this.src = result;
+     // this.src = result;
       this.ngOnInit();
     }); 
   }

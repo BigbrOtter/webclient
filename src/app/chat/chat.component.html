@@ -1,11 +1,35 @@
 <div id="border">
-  <h1>chat</h1>
-    <div id="chatbox"></div>
+        <h1>chat</h1>
+          <div id="chatbox"></div>
 
-    <form name="message">
-        <input name="usermsg" type="text" id="usermsg" size="63" />
-        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
-    </form>
+<mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color"
+            class="textBox">
+            <div *ngIf="tile.isInput">
+                <form class="inputForm" name="message" >
+                        <input name="usermsg" type="text" id="usermsg" size="63" />
+                        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="test()" />
+                    </form>
+            </div>
+
+            <div class="chatBox" *ngIf="!tile.isInput">
+                    <ul>
+                            <li *ngFor="let message of messages">
+                             {{message.from}}: {{ message.message }}
+                            </li>
+                    </ul>
+            </div>
+        </mat-grid-tile>    
+      </mat-grid-list>
+
+
+
+
+
 
 </div>
 
