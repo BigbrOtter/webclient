@@ -18,19 +18,19 @@ export class StreamComponent implements OnInit {
   dialogRef: any;
   url:any;
   cert: Certificate;
-  
+
   @Input() id: string;
 
-  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpTest:HttpclientService) { 
+  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpTest:HttpclientService) {
     this.comp = new ProfilebrowserComponent(dialog, this.id);
     //this.src = "";
   }
 
   ngOnInit() {
     console.log(this.id);
-    //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src); 
+    //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
-
+    loadStream();
   }
 
   test(){
@@ -45,7 +45,7 @@ export class StreamComponent implements OnInit {
   }
 
   openDialog(){
-    
+
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
       data: {id: this.id, src: this.src},
       autoFocus: true
@@ -55,7 +55,7 @@ export class StreamComponent implements OnInit {
       console.log("thing closed " + result);
      // this.src = result;
       this.ngOnInit();
-    }); 
+    });
   }
 
 }
