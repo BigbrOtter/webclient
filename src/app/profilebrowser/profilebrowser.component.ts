@@ -11,10 +11,12 @@ export class ProfilebrowserComponent implements OnInit {
   description:string;
   dataRef:any;
   dialogRef: any;
+  streamCardId: string;
 
-  constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data:any) {
+  constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, streamCardId: string) {
     this.description = 'test';
     this.dataRef = data;
+    this.streamCardId = streamCardId;
    }
 
   ngOnInit() {
@@ -30,7 +32,10 @@ export class ProfilebrowserComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(result => {
       console.log("thing closed " + result)
       return result;
-    }); 
+    });
+
+    //Set right streamer to right chat
+
   }
 
   close(){

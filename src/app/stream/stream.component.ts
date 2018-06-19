@@ -18,11 +18,13 @@ export class StreamComponent implements OnInit {
   dialogRef: any;
   url:any;
   cert: Certificate;
+  streamNumber: string;
 
   @Input() id: string;
 
-  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpTest:HttpclientService) {
-    this.comp = new ProfilebrowserComponent(dialog, this.id);
+  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
+    this.comp = new ProfilebrowserComponent(dialog, this.id, this.id);
+    console.log(this.id)
     //this.src = "";
   }
 
@@ -55,6 +57,8 @@ export class StreamComponent implements OnInit {
           // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
     loadStream(result);
     });
+
+
   }
 
 }

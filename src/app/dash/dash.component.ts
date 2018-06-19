@@ -17,11 +17,11 @@ chats= [
   {sender: 'henk', message:'Hello'}
 ]
   cards = [
-    { title: 'Card 1', cols: 2, rows: 1 , isVideoCard: true},
-    { title: 'Card 2', cols: 2, rows: 1 , isVideoCard: true },
-    { title: 'Card 3', cols: 1, rows: 2 , isVideoCard: false },
-    { title: 'Card 4', cols: 2, rows: 1 , isVideoCard: true },
-    { title: 'Card 5', cols: 2, rows: 1 , isVideoCard: true }
+    { title: 'stream_1', cols: 2, rows: 1 , isVideoCard: true},
+    { title: 'stream_2', cols: 2, rows: 1 , isVideoCard: true },
+    { title: 'stream_3', cols: 1, rows: 2 , isVideoCard: false },
+    { title: 'stream_4', cols: 2, rows: 1 , isVideoCard: true },
+    { title: 'chats', cols: 2, rows: 1 , isVideoCard: true }
   ];
 
 

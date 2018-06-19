@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\chat",
+    "\\src\\app\\chat-tab",
     "\\src\\app\\classes",
+    "\\src\\app\\dash",
     "\\src\\app\\nav",
     "\\src\\app\\profile",
-    "\\src\\app\\profilebrowser",
     "\\src\\app\\stream"
   ],
-  "SelectedNode": "\\src\\app\\httpclient.service.spec.ts",
+  "SelectedNode": "\\src\\app\\stream\\stream.component.ts",
   "PreviewInSolutionExplorer": false
 }

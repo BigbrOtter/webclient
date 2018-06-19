@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ChatMessage} from '../chatmessage'; 
 import {EncryptionService} from '../encryption.service';
 import { HttpclientService } from '../httpclient.service';
@@ -11,9 +11,12 @@ import {FormsModule} from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
   isInput: boolean;
+  streamerid: string; // This servers as a stream ID, as username is unique
+  @Input() chatId: string;
+
   temp:ChatMessage;
   messages: ChatMessage[] = [];
-  crypto:EncryptionService;
+  crypto: EncryptionService;
 
   constructor(private httpClient:HttpclientService) {
     this.crypto = new EncryptionService();
@@ -28,6 +31,9 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit() {
+
+    console.log(this.chatId);
+
   }
 
   test(message: string){
@@ -43,7 +49,9 @@ export class ChatComponent implements OnInit {
     document.getElementById("usermsg").innerText.toUpperCase();
   }
 
-
+  setStreamerId(id: string) {
+    this.streamerid = id; 
+  }
 
 
 
