@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Certificate } from './certificate';
 import { Profile } from './profile';
 import { catchError, tap } from 'rxjs/operators';
-=======
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import {Certificate} from './certificate';
->>>>>>> 0299b356f5dccede25b5e94b4cdcb02b948cd524
 
 
 

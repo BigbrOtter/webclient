@@ -23,8 +23,6 @@ export class EncryptionService {
   }
 
   checkMessage(message:string[], messageEnc:string){
-
-    console.log(message);
     var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
     var pubKey = window.localStorage.getItem("public");
     var decrypted;
