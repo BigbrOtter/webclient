@@ -1,14 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\e2e",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\dash",
+    "\\src\\app\\classes",
     "\\src\\app\\nav",
     "\\src\\app\\profile",
+    "\\src\\app\\profilebrowser",
     "\\src\\app\\stream"
   ],
-  "SelectedNode": "\\src\\app\\nav\\nav.component.ts",
+  "SelectedNode": "\\src\\app\\httpclient.service.spec.ts",
   "PreviewInSolutionExplorer": false
 }

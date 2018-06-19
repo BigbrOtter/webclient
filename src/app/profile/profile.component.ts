@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from '../app.component';
+import { HttpclientService } from '../httpclient.service';
+import { Profile } from '../Profile';
 
 
 @Component({
@@ -14,8 +16,11 @@ import { AppComponent } from '../app.component';
 
 export class ProfileComponent implements OnInit {
 
-  username: String
-  slogan: String
+  username: string
+  slogan: string
+  image: File
+  prof: Profile;
+  httpClient: HttpclientService;
 
   constructor(private dialog: MatDialog) {
 
@@ -27,11 +32,26 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
+    if (this.image != null) {
+      this.prof = new Profile(this.image, this.slogan);
+      
 
+    }
   }
 
   cancel() {
     this.dialog.closeAll();
+  }
+
+  fileChange(file) {
+
+    try {
+      this.image = file.target.files[0];
+      console.log(this.image.name);
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   openDialog() {
