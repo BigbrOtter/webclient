@@ -8,24 +8,34 @@ declare var CryptRSA:any;
 })
 export class EncryptionService {
 
-  key: any;
-
   private prvKey:string;
   constructor() { 
     this.prvKey = window.localStorage.getItem("private");
+    
   }
 
   encyptMessage(message:string){
     var encryptedMessage;
     
-
-    console.log("called");
-    
-    
     encryptedMessage = crypto.SHA256(message).toString(crypto.enc.Hex);
     let key = new CryptRSA(this.prvKey);
-    console.log(key.encryptPrivate(encryptedMessage, 'base64'));
     return key.encryptPrivate(encryptedMessage, 'base64');
-  
+  }
+
+  checkMessage(message:string[], messageEnc:string){
+
+    console.log(message);
+    var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
+    var pubKey = window.localStorage.getItem("public");
+    var decrypted;
+    let key = new CryptRSA(pubKey);    
+
+    decrypted = key.decryptPublic(messageEnc);
+
+    if(hash != decrypted){
+      return false;
+    }
+
+    return true;
   }
 }

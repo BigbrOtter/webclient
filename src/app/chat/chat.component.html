@@ -10,11 +10,8 @@
             [style.background]="tile.color"
             class="textBox">
             <div class="input" *ngIf="tile.isInput">
-                    <form #form="ngForm">
-                        <input #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
-                        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="test(message.value)" />
-                    </form>
-
+                <input autocomplete="off" #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
+                <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="sendChat(message.value)" />
             </div>
 
             <div class="chatBox" *ngIf="!tile.isInput">
@@ -26,11 +23,5 @@
             </div>
         </mat-grid-tile>    
       </mat-grid-list>
-
-
-
-
-
-
 </div>
 
