@@ -20,6 +20,20 @@ export class HttpclientService {
      return this.http.get<Certificate>(url);
    }
 
+   postMessage(message:string, encrypted:string, streamerId:number, cert:string){
+     let body = {
+       "streamer": streamerId,
+       "cert": cert,
+       "message": message,
+       "signature":encrypted
+     };
+
+     console.log(body);
+      var url = "https://bigbrotter.herokuapp.com/api/chat";
+
+      return this.http.post(url,body);
+   }
+
   getUrl(){
     return this.url;
   }

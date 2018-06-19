@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatMessage} from '../chatmessage'; 
 import {EncryptionService} from '../encryption.service';
+import { HttpclientService } from '../httpclient.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -11,12 +13,11 @@ export class ChatComponent implements OnInit {
   isInput: boolean;
   temp:ChatMessage;
   messages: ChatMessage[] = [];
-  i:number;
   crypto:EncryptionService;
 
-  constructor() {
-    this.i = 0;
+  constructor(private httpClient:HttpclientService) {
     this.crypto = new EncryptionService();
+    this.temp = new ChatMessage();
    }
 
 
@@ -29,12 +30,17 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
   }
 
-  test(){
-    this.temp = {message: "Hallo wereld!", timestamp:"100", from:"Henk", to:"temp"};
-    this.i++;
+  test(message: string){
+    this.temp = new ChatMessage();
+    this.temp.setMessage(message);
+    console.log(message);
+    let messsage = this.crypto.encyptMessage(this.temp.message);
+    this.httpClient.postMessage(this.temp.message, messsage,1, window.localStorage.getItem("cert")).subscribe(result =>{
+      console.log(result);
+    });
 
-    this.crypto.encyptMessage(this.temp.message);
     this.messages.push(this.temp);
+    document.getElementById("usermsg").innerText.toUpperCase();
   }
 
 

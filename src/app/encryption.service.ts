@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as crypto from 'crypto-js';
-import * as rsa from 'pidcrypt';
+declare var CryptRSA:any;
 
 
 @Injectable({
@@ -19,18 +19,13 @@ export class EncryptionService {
     var encryptedMessage;
     
 
-    
+    console.log("called");
     
     
     encryptedMessage = crypto.SHA256(message).toString(crypto.enc.Hex);
-
-    console.log();
-    
+    let key = new CryptRSA(this.prvKey);
+    console.log(key.encryptPrivate(encryptedMessage, 'base64'));
+    return key.encryptPrivate(encryptedMessage, 'base64');
   
-
-
-    //console.log(encryptedMessage);
-
-
   }
 }

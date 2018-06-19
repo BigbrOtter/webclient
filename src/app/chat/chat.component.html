@@ -9,11 +9,12 @@
             [rowspan]="tile.rows"
             [style.background]="tile.color"
             class="textBox">
-            <div *ngIf="tile.isInput">
-                <form class="inputForm" name="message" >
-                        <input name="usermsg" type="text" id="usermsg" size="63" />
-                        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="test()" />
+            <div class="input" *ngIf="tile.isInput">
+                    <form #form="ngForm">
+                        <input #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
+                        <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="test(message.value)" />
                     </form>
+
             </div>
 
             <div class="chatBox" *ngIf="!tile.isInput">
