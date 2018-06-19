@@ -33,17 +33,16 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.lastMessageTimer = Math.floor(Date.now() / 1000).toString();
     var resultArray;
-    //Get the new chat messages from the server --atm not with guaranteed integrity
-    const secondCounter = interval(5000);
+    //Get the new chat messages from the server
+    const secondCounter = interval(1000);
 
     secondCounter.subscribe(n=>{
       this.httpClient.getChat(this.lastMessageTimer, 1, window.localStorage.getItem("cert")).subscribe(result => {
-        console.log(result);
         resultArray = JSON.parse(JSON.stringify(result));
 
         this.messageArrayTemp = resultArray.chats;
-
-        if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){
+        
+        if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){//integrity check
           if(this.messageArrayTemp.length > 0){
             this.lastMessageTimer = this.messageArrayTemp[this.messageArrayTemp.length -1].timestamp;
             

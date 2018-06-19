@@ -21,7 +21,7 @@ export class StreamComponent implements OnInit {
 
   @Input() id: string;
 
-  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpTest:HttpclientService) {
+  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpClient:HttpclientService) {
     this.comp = new ProfilebrowserComponent(dialog, this.id);
     //this.src = "";
   }
@@ -33,17 +33,6 @@ export class StreamComponent implements OnInit {
 
   }
 
-  test(){
-    let urlTest = "https://bigbrotter.herokuapp.com/register?bsn=1&naam=kevin";
-
-    this.httpTest.getStream(urlTest).subscribe(result => {
-      this.cert = result;
-      window.localStorage.clear();
-      window.localStorage.setItem("private", this.cert.private);
-      window.localStorage.setItem("cert", this.cert.cert);
-    });
-  }
-
   openDialog(){
 
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
@@ -52,7 +41,7 @@ export class StreamComponent implements OnInit {
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-          // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
+    // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
     loadStream(result);
     });
   }
