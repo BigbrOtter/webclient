@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import {Certificate} from './certificate';
 
 
@@ -27,11 +27,23 @@ export class HttpclientService {
        "message": message,
        "signature":encrypted
      };
-
-     console.log(body);
       var url = "https://bigbrotter.herokuapp.com/api/chat";
 
       return this.http.post(url,body);
+   }
+
+   getChat(timeStamp:string, streamerId:number, cert:string){
+    var url = "https://bigbrotter.herokuapp.com/api/chat";
+
+     const httpOptions = {
+      headers: new HttpHeaders({
+        'cert': cert,
+        'timeStamp': timeStamp,
+        'streamer': streamerId.toString()
+      })
+    };
+
+     return this.http.get(url, httpOptions);
    }
 
   getUrl(){
