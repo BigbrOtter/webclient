@@ -34,11 +34,10 @@ export class StreamComponent implements OnInit {
   }
 
   openDialog(){
-
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
       data: {id: this.id, src: this.src}
     }).afterClosed().subscribe(result =>{
-      console.log(result);
+      
     });
   }
 

@@ -34,10 +34,13 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit() {
-   //this.initChat();
   }
 
   initChat(){
+
+  }
+
+  getChat(){
     this.lastMessageTimer = Math.floor(Date.now() / 1000).toString();
     var resultArray;
     var streamId;
@@ -56,12 +59,14 @@ export class ChatComponent implements OnInit {
             this.messageArrayTemp.forEach(element => {
 
               this.tempMessage = new ChatMessage();
-  
               this.tempMessage.setMessage(element.message);
               this.tempMessage.setFrom(element.name);
+              this.messages.push(this.tempMessage);
+
               switch(this.chatId){
                 case "1" :{
                   console.log("push 1");
+                  this.messages.push(this.tempMessage);
 
                 } break;
                 case "2":{
@@ -88,8 +93,7 @@ export class ChatComponent implements OnInit {
     this.httpClient.postMessage(this.tempMessage.message, messsageEnc,1, window.localStorage.getItem("cert")).subscribe(result =>{
       console.log(result);
     });
-
-    
+    this.getChat();
   }
 
   setStreamerId(id: string) {
