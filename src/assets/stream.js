@@ -2,8 +2,8 @@ function loadStream(id){
   if (flvjs.isSupported()) {
     var videoElement = document.getElementById(id);
     var flvPlayer = flvjs.createPlayer({
-        type: 'flv',
-        url: 'http://145.49.34.4:8000/live/stream.flv'
+        type: 'hls',
+        url: ''
     });
     flvPlayer.attachMediaElement(videoElement);
     flvPlayer.load();

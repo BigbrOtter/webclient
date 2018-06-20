@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angu
 import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 import { HttpclientService } from '../httpclient.service';
 import { Certificate } from '../certificate';
+import { VgCoreModule } from 'videogular2/core';
 
 @Component({
   selector: 'app-stream',
@@ -11,7 +12,6 @@ import { Certificate } from '../certificate';
   styleUrls: ['./stream.component.css']
 })
 export class StreamComponent implements OnInit {
-
   src : string;
   comp : ProfilebrowserComponent;
   dataRef:any;
@@ -23,8 +23,10 @@ export class StreamComponent implements OnInit {
   @Input() id: string;
 
   constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
+    // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     //this.src = "";
+    this.src = "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8";
   }
 
   ngOnInit() {
