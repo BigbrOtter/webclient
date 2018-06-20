@@ -20,16 +20,20 @@ export class ProfilebrowserComponent implements OnInit {
     this.description = 'test';
     this.dataRef = data;
     this.streamCardId = this.streamCardId;
-    var streamer = new Streamer();
-    streamer.setName("Henk");
-    streamer.setUrl("www.henk.nl");
-    this.listOfStreams[0] = streamer;
     this.dialogRef = dialog;
    }
 
   ngOnInit() {
    this.httpClient.getAllStreams(window.localStorage.getItem("cert")).subscribe(result => {
-      console.log(result);
+      var tempResult;
+      tempResult = JSON.parse(JSON.stringify(result));
+
+      tempResult.forEach(element => {
+        var temp = new Streamer();
+        temp.setName(element.user.naam);
+        temp.setUrl(element.url) ;
+        this.listOfStreams.push(temp);
+      });
     });
 
   }

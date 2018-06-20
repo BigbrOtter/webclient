@@ -34,7 +34,7 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit() {
-   this.initChat();
+   //this.initChat();
   }
 
   initChat(){
