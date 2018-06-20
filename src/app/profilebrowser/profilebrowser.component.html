@@ -1,13 +1,17 @@
 <h2 mat-dialog-title>{{data.id}}</h2>
 <mat-dialog-content>
-  <input matInput [(ngModel)]="data.src" value="Test">
+
+    <ul class="streamList">
+        <li (click)="onClick(stream.url)" *ngFor="let stream of listOfStreams">
+        <button mat-button> {{stream.name}} </button> 
+        </li>
+    </ul>
+
+
  
 </mat-dialog-content>
 
 <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.src" cdkFocusInitial color="primary">
-      Okays!
-    </button>
     <button mat-button (click)="close()">
       Cancel
     </button>

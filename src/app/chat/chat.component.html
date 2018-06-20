@@ -11,7 +11,7 @@
             class="textBox">
             <div class="input" *ngIf="tile.isInput">
                 <input autocomplete="off" #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
-                <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="sendChat(message.value)" />
+                <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="sendChat(message.value, this.chatId)" />
             </div>
 
             <div class="chatBox" *ngIf="!tile.isInput">

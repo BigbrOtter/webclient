@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Certificate } from './certificate';
 import { Profile } from './profile';
 import { catchError, tap } from 'rxjs/operators';
-=======
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import {Certificate} from './certificate';
->>>>>>> feature_stream
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +21,6 @@ export class HttpclientService {
   }
 
    postProfileDetails(url: string, profile: Profile) {
-     console.log("Posting profile data. Image and slogan");
-
-
      try {
        return this.http.post<Profile>(url, profile).pipe(
 
@@ -69,6 +59,19 @@ export class HttpclientService {
     };
 
      return this.http.get(url, httpOptions);
+   }
+
+   getAllStreams(cert:string){
+     var url = "https://bigbrotter.herokuapp.com/api/streams";
+
+     const httpOptions = {
+      headers: new HttpHeaders({
+        'cert': cert
+      })
+    };
+
+    return this.http.get(url, httpOptions);
+
    }
 
   getUrl(){

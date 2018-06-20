@@ -11,42 +11,36 @@ import { interval } from 'rxjs';
 })
 export class ChatComponent implements OnInit {
   isInput: boolean;
-<<<<<<< HEAD
   streamerid: string; // This servers as a stream ID, as username is unique
   @Input() chatId: string;
-
-  temp:ChatMessage;
-  messages: ChatMessage[] = [];
-  crypto: EncryptionService;
-=======
   tempMessage:ChatMessage;
   messages: ChatMessage[] = [];
+  messages2: ChatMessage[] = [];
+  messages3: ChatMessage[] = [];
+  messages4: ChatMessage[] = [];
   crypto:EncryptionService;
   lastMessageTimer: string;
   messageArrayTemp: any[];
->>>>>>> feature_stream
 
   constructor(private httpClient:HttpclientService) {
     this.crypto = new EncryptionService();
-    this.tempMessage = new ChatMessage();
-
    }
 
 
   tiles = [
-    {text: 'One', cols: 1.80, rows: 5, color: 'lightblue', isInput: false},
-    {text: 'input', cols: 1.80, rows: 0.50, color: 'green', isInput: true}
+    {text: 'One', cols: 1.80, rows: 5, color: 'primary', isInput: false},
+    {text: 'input', cols: 1.80, rows: 0.50, color: 'secondary', isInput: true}
   ];
 
 
   ngOnInit() {
-<<<<<<< HEAD
+   this.initChat();
+  }
 
-    console.log(this.chatId);
-
-=======
+  initChat(){
     this.lastMessageTimer = Math.floor(Date.now() / 1000).toString();
     var resultArray;
+    var streamId;
     //Get the new chat messages from the server
     const secondCounter = interval(1000);
 
@@ -59,38 +53,46 @@ export class ChatComponent implements OnInit {
         if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){//integrity check
           if(this.messageArrayTemp.length > 0){
             this.lastMessageTimer = this.messageArrayTemp[this.messageArrayTemp.length -1].timestamp;
-            
             this.messageArrayTemp.forEach(element => {
+
               this.tempMessage = new ChatMessage();
   
               this.tempMessage.setMessage(element.message);
               this.tempMessage.setFrom(element.name);
-              
-              this.messages.push(this.tempMessage);
+              switch(this.chatId){
+                case "1" :{
+                  console.log("push 1");
+
+                } break;
+                case "2":{
+                  this.messages2.push(this.tempMessage);
+                } break;
+                case "3":{
+                  this.messages3.push(this.tempMessage);
+                } break;
+                case "4":{
+                  this.messages4.push(this.tempMessage);
+                }break;
+              };
             });
           }
         }
       });
     });
->>>>>>> feature_stream
   }
 
   sendChat(message: string){
     this.tempMessage = new ChatMessage();
     this.tempMessage.setMessage(message);
-    console.log(message);
     let messsageEnc = this.crypto.encyptMessage(this.tempMessage.message);
     this.httpClient.postMessage(this.tempMessage.message, messsageEnc,1, window.localStorage.getItem("cert")).subscribe(result =>{
       console.log(result);
     });
+
+    
   }
 
   setStreamerId(id: string) {
     this.streamerid = id; 
   }
-
-
-
-
-
 }

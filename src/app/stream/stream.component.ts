@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Sanitizer } from '@angular/core';
 import { ProfilebrowserComponent } from '../profilebrowser/profilebrowser.component';
-import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 import { HttpclientService } from '../httpclient.service';
 import { Certificate } from '../certificate';
@@ -22,19 +22,12 @@ export class StreamComponent implements OnInit {
 
   @Input() id: string;
 
-<<<<<<< HEAD
   constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
-    this.comp = new ProfilebrowserComponent(dialog, this.id, this.id);
-    console.log(this.id)
-=======
-  constructor(public dialog: MatDialog, public sanitizer:DomSanitizer, private httpClient:HttpclientService) {
-    this.comp = new ProfilebrowserComponent(dialog, this.id);
->>>>>>> feature_stream
+    this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     //this.src = "";
   }
 
   ngOnInit() {
-    console.log(this.id);
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
 
@@ -43,16 +36,10 @@ export class StreamComponent implements OnInit {
   openDialog(){
 
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
-      data: {id: this.id, src: this.src},
-      autoFocus: true
+      data: {id: this.id, src: this.src}
+    }).afterClosed().subscribe(result =>{
+      console.log(result);
     });
-
-    this.dialogRef.afterClosed().subscribe(result => {
-    // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
-    loadStream(result);
-    });
-
-
   }
 
 }
