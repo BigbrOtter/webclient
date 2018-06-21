@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Sanitizer } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { ProfilebrowserComponent } from '../profilebrowser/profilebrowser.component';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 import { HttpclientService } from '../httpclient.service';
 import { Certificate } from '../certificate';
-import { VgCoreModule } from 'videogular2/core';
+import {VgAPI} from 'videogular2/core';
 
 @Component({
   selector: 'app-stream',
@@ -18,6 +18,7 @@ export class StreamComponent implements OnInit {
   dialogRef: any;
   url:any;
   cert: Certificate;
+
   streamNumber: string;
 
   @Input() id: string;
@@ -25,41 +26,47 @@ export class StreamComponent implements OnInit {
   constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
-    //this.src = "";
+    this.src = "";
   }
 
   ngOnInit() {
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
-
-    // this.httpTest.getTextFile('http://37.97.244.58:8000/live/test6/index.m3u8')
-    //   .subscribe(results => {
-    //     let manifestarray =  results.split('\n');
-    //     let ml = manifestarray.length;
-    //     // let manifestarray2 = [manifestarray[ml-6], manifestarray[ml-4], manifestarray[ml-2]];
-    //     // console.log(manifestarray2);
-    //     // manifestarray2.forEach((element) => {
-    //     //   console.log(`http://37.97.244.58:8000/live/test6/${element}`);
-    //     // });
-    //     let latestTS = manifestarray[ml-2];
-    //     console.log(`http://37.97.244.58:8000/live/test6/${latestTS}`);
-    //     this.httpTest.getTextFile(`http://37.97.244.58:8000/live/test6/${latestTS}`)
-    //       .subscribe( results2 => {
-    //         // console.log(results2);
-    //         this.httpTest.getTextFile(`http://37.97.244.58:8000/live/test6/${latestTS + '.ehash'}`)
-    //           .subscribe(results3 => {
-    //             console.log(results3);
-    //           })
-    //       })
-    //   });
   }
 
   openDialog(){
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
       data: {id: this.id, src: this.src}
     }).afterClosed().subscribe(result =>{
-      this.src = result;
+      // alert(result.url);
+      this.src = result.url;
+      let baseurl = result.url.substring(0, result.url.length - 10);
+      console.log("result.url: " + result.url);
+      console.log("baseurl: " + baseurl);
+
+
+      this.httpTest.getTextFile(result.url)
+        .subscribe(results => {
+          let manifestarray =  results.split('\n');
+          let ml = manifestarray.length;
+
+          let latestTS = manifestarray[ml-2];
+          let tsUrl = baseurl + latestTS;
+          this.httpTest.getTextFile(tsUrl)
+            .subscribe( results2 => {
+              // console.log(results2);
+              let ehashUrl = tsUrl + '.ehash';
+              this.httpTest.getTextFile(ehashUrl)
+                .subscribe(results3 => {
+                  // console.log(results3);
+                })
+            })
+        });
     });
   }
-
 }
+// let manifestarray2 = [manifestarray[ml-6], manifestarray[ml-4], manifestarray[ml-2]];
+// console.log(manifestarray2);
+// manifestarray2.forEach((element) => {
+//   console.log(`http://37.97.244.58:8000/live/test6/${element}`);
+// });

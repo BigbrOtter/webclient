@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bb125bd-c2c1-4224-8a30-6a80b8da7b3f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/chat/chat.component.ts" afterPath="$PROJECT_DIR$/src/app/chat/chat.component.ts" />
-      <change beforePath="$PROJECT_DIR$/src/app/encryption.service.ts" afterPath="$PROJECT_DIR$/src/app/encryption.service.ts" />
-      <change beforePath="$PROJECT_DIR$/src/app/httpclient.service.ts" afterPath="$PROJECT_DIR$/src/app/httpclient.service.ts" />
-      <change beforePath="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.html" afterPath="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.html" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts" afterPath="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts" />
+      <change beforePath="$PROJECT_DIR$/src/app/stream/stream.component.html" afterPath="$PROJECT_DIR$/src/app/stream/stream.component.html" />
       <change beforePath="$PROJECT_DIR$/src/app/stream/stream.component.ts" afterPath="$PROJECT_DIR$/src/app/stream/stream.component.ts" />
-      <change beforePath="$PROJECT_DIR$/src/assets/rsa-brow.js" afterPath="$PROJECT_DIR$/src/assets/rsa-brow.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,12 +19,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="encryption.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="encryption.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/encryption.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+            <state relative-caret-position="595">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stream.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/stream/stream.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,8 +64,8 @@
       <file leaf-file-name="profilebrowser.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+            <state relative-caret-position="675">
+              <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -74,12 +93,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stream.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stream.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/stream/stream.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="709">
+              <caret line="64" column="7" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,9 +124,10 @@
         <option value="$PROJECT_DIR$/src/app/chat/chat.component.ts" />
         <option value="$PROJECT_DIR$/src/app/downloader.service.ts" />
         <option value="$PROJECT_DIR$/src/app/httpclient.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/stream/stream.component.ts" />
         <option value="$PROJECT_DIR$/src/app/encryption.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/stream/stream.component.html" />
+        <option value="$PROJECT_DIR$/src/app/stream/stream.component.ts" />
       </list>
     </option>
   </component>
@@ -247,12 +269,12 @@
       <updated>1529413977899</updated>
       <workItem from="1529413979907" duration="5309000" />
       <workItem from="1529482675229" duration="14568000" />
-      <workItem from="1529568545576" duration="6240000" />
+      <workItem from="1529568545576" duration="12011000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26117000" />
+    <option name="totallyTimeSpent" value="31888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -414,29 +436,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/encryption.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        <state relative-caret-position="595">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/stream/stream.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/profilebrowser/profilebrowser.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        <state relative-caret-position="675">
+          <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/stream/stream.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/encryption.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/stream/stream.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="709">
+          <caret line="64" column="7" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

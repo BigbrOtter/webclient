@@ -45,7 +45,7 @@ export class ProfilebrowserComponent implements OnInit {
   }
 
   onClick(resultUrl:any){
-    console.log(resultUrl);
+    // console.log(resultUrl);
     this.dialogRef.close(resultUrl);
   }
 
