@@ -18,7 +18,7 @@ export class EncryptionService {
     var encryptedMessage;
     
     encryptedMessage = crypto.SHA256(message).toString(crypto.enc.Hex);
-    let key = new CryptRSA(this.prvKey);
+    let key = new CryptRSA([this.prvKey, "2048"]);
     return key.encryptPrivate(encryptedMessage, 'base64');
   }
 

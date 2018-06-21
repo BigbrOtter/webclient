@@ -24580,7 +24580,8 @@ module.exports = {
 var _ = require('../utils')._;
 
 function formatParse(format) {
-    format = format.split('-');
+    format = format.toString();
+    format = format.split("-");
     var keyType = 'private';
     var keyOpt = {type: 'default'};
 

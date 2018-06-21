@@ -15,6 +15,7 @@ export class ProfilebrowserComponent implements OnInit {
   dialogRef: any;
   streamCardId: string;
   listOfStreams: Streamer[] = [];
+  temp : any = "1-2-3";
 
   constructor(private dialog: MatDialogRef<ProfilebrowserComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private httpClient:HttpclientService) {
     this.dataRef = data;
@@ -34,7 +35,8 @@ export class ProfilebrowserComponent implements OnInit {
         this.listOfStreams.push(temp);
       });
     });
-
+ 
+    console.log(this.temp.split("-"));
   }
 
   openDialog(){
@@ -42,6 +44,7 @@ export class ProfilebrowserComponent implements OnInit {
   }
 
   onClick(resultUrl:any){
+    console.log(resultUrl);
     this.dialogRef.close(resultUrl);
   }
 
