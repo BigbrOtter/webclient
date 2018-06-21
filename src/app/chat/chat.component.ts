@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit {
     this.httpClient.postMessage(this.tempMessage.message, messsageEnc,"5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result =>{
       console.log(result);
     });
-    this.getChat();
+    //this.getChat();
   }
 
   setStreamerId(id: string) {

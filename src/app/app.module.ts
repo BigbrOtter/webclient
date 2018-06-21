@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ProfileComponent } from './profile/profile.component';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatDialogModule, MatTabsModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatDialogModule, MatTabsModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { DashComponent } from './dash/dash.component';
 import { GridsterModule } from 'angular-gridster2';
 import { StreamComponent } from './stream/stream.component';
@@ -50,7 +50,16 @@ import {VgStreamingModule} from 'videogular2/streaming';
     VgOverlayPlayModule,
     VgBufferingModule,
     MatTabsModule,
-    VgStreamingModule
+    VgStreamingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
