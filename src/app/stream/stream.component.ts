@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Sanitizer } from '@angular/core';
 import { ProfilebrowserComponent } from '../profilebrowser/profilebrowser.component';
-import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 import { HttpclientService } from '../httpclient.service';
 import { Certificate } from '../certificate';
+import { VgCoreModule } from 'videogular2/core';
 
 @Component({
   selector: 'app-stream',
@@ -11,7 +12,6 @@ import { Certificate } from '../certificate';
   styleUrls: ['./stream.component.css']
 })
 export class StreamComponent implements OnInit {
-
   src : string;
   comp : ProfilebrowserComponent;
   dataRef:any;
@@ -23,31 +23,29 @@ export class StreamComponent implements OnInit {
   @Input() id: string;
 
   constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
+<<<<<<< HEAD
     this.comp = new ProfilebrowserComponent(dialog, this.id, this.id);
     console.log(this.id)
+=======
+    // @ts-ignore ignore ERROR
+    this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
+>>>>>>> feature_chat_tabs
     //this.src = "";
+    this.src = "http://37.97.244.58:8000/live/test6/index.m3u8";
   }
 
   ngOnInit() {
-    console.log(this.id);
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
 
   }
 
   openDialog(){
-
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
-      data: {id: this.id, src: this.src},
-      autoFocus: true
+      data: {id: this.id, src: this.src}
+    }).afterClosed().subscribe(result =>{
+      
     });
-
-    this.dialogRef.afterClosed().subscribe(result => {
-    // @ts-ignore ignore ERROR in src/app/stream/stream.component.ts(33,5);
-    loadStream(result);
-    });
-
-
   }
 
 }

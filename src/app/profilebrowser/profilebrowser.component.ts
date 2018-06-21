@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from "@angular/material";
+import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import { HttpclientService } from '../httpclient.service';
+import {Streamer} from '../streamer';
 
 @Component({
   selector: 'app-profilebrowser',
@@ -12,33 +14,38 @@ export class ProfilebrowserComponent implements OnInit {
   dataRef:any;
   dialogRef: any;
   streamCardId: string;
+  listOfStreams: Streamer[] = [];
 
-  constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, streamCardId: string) {
-    this.description = 'test';
+  constructor(private dialog: MatDialogRef<ProfilebrowserComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private httpClient:HttpclientService) {
     this.dataRef = data;
-    this.streamCardId = streamCardId;
+    this.streamCardId = this.streamCardId;
+    this.dialogRef = dialog;
    }
 
   ngOnInit() {
+   this.httpClient.getAllStreams(window.localStorage.getItem("cert")).subscribe(result => {
+      var tempResult;
+      tempResult = JSON.parse(JSON.stringify(result));
+
+      tempResult.forEach(element => {
+        var temp = new Streamer();
+        temp.setName(element.user.naam);
+        temp.setUrl(element.url) ;
+        this.listOfStreams.push(temp);
+      });
+    });
+
   }
 
   openDialog(){
 
   }
 
-  confirmSelection(){
-    this.dialog.closeAll();
-
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log("thing closed " + result)
-      return result;
-    });
-
-    //Set right streamer to right chat
-
+  onClick(resultUrl:any){
+    this.dialogRef.close(resultUrl);
   }
 
   close(){
-    this.dialog.closeAll();
+    this.dialogRef.close();
   }
 }

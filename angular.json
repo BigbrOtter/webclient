@@ -28,7 +28,7 @@
               },
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/hls.js/dist/hls.min.js"]
           },
           "configurations": {
             "production": {
