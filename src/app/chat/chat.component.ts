@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit {
     const secondCounter = interval(1000);
 
     secondCounter.subscribe(n=>{
-      this.httpClient.getChat(this.lastMessageTimer, 1, window.localStorage.getItem("cert")).subscribe(result => {
+      this.httpClient.getChat(this.lastMessageTimer, "5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result => {
         resultArray = JSON.parse(JSON.stringify(result));
         this.messageArrayTemp = resultArray.chats;
         
@@ -68,7 +68,7 @@ export class ChatComponent implements OnInit {
     this.tempMessage = new ChatMessage();
     this.tempMessage.setMessage(message);
     let messsageEnc = this.crypto.encyptMessage(this.tempMessage.message);
-    this.httpClient.postMessage(this.tempMessage.message, messsageEnc,1, window.localStorage.getItem("cert")).subscribe(result =>{
+    this.httpClient.postMessage(this.tempMessage.message, messsageEnc,"5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result =>{
       console.log(result);
     });
     this.getChat();

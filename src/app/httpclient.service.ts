@@ -3,11 +3,8 @@ import { Certificate } from './certificate';
 import { Profile } from './profile';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-<<<<<<< HEAD
 
 
-=======
->>>>>>> feature_chat_tabs
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +37,7 @@ export class HttpclientService {
      console.log("Method " + method + " encountered an error. Object: " + object.toString());
    }
 
-   postMessage(message:string, encrypted:string, streamerId:number, cert:string){
+   postMessage(message:string, encrypted:string, streamerId:string, cert:string){
      let body = {
        "streamer": streamerId,
        "cert": cert,
@@ -52,7 +49,7 @@ export class HttpclientService {
       return this.http.post(url,body);
    }
 
-   getChat(timeStamp:string, streamerId:number, cert:string){
+   getChat(timeStamp:string, streamerId:string, cert:string){
     var url = "https://bigbrotter.herokuapp.com/api/chat";
 
      const httpOptions = {
