@@ -26,21 +26,40 @@ export class StreamComponent implements OnInit {
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     //this.src = "";
-    this.src = "http://37.97.244.58:8000/live/test6/index.m3u8";
+    // this.src = "http://37.97.244.58:8000/live/test6/index.m3u8";
   }
 
   ngOnInit() {
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
-    
 
+    // this.httpTest.getTextFile('http://37.97.244.58:8000/live/test6/index.m3u8')
+    //   .subscribe(results => {
+    //     let manifestarray =  results.split('\n');
+    //     let ml = manifestarray.length;
+    //     // let manifestarray2 = [manifestarray[ml-6], manifestarray[ml-4], manifestarray[ml-2]];
+    //     // console.log(manifestarray2);
+    //     // manifestarray2.forEach((element) => {
+    //     //   console.log(`http://37.97.244.58:8000/live/test6/${element}`);
+    //     // });
+    //     let latestTS = manifestarray[ml-2];
+    //     console.log(`http://37.97.244.58:8000/live/test6/${latestTS}`);
+    //     this.httpTest.getTextFile(`http://37.97.244.58:8000/live/test6/${latestTS}`)
+    //       .subscribe( results2 => {
+    //         // console.log(results2);
+    //         this.httpTest.getTextFile(`http://37.97.244.58:8000/live/test6/${latestTS + '.ehash'}`)
+    //           .subscribe(results3 => {
+    //             console.log(results3);
+    //           })
+    //       })
+    //   });
   }
 
   openDialog(){
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
       data: {id: this.id, src: this.src}
     }).afterClosed().subscribe(result =>{
-      
+      this.src = result;
     });
   }
 

@@ -9,16 +9,16 @@ declare var CryptRSA:any;
 export class EncryptionService {
 
   private prvKey:string;
-  constructor() { 
+  constructor() {
     this.prvKey = window.localStorage.getItem("private");
-    
+
   }
 
   encyptMessage(message:string){
     var encryptedMessage;
-    
+
     encryptedMessage = crypto.SHA256(message).toString(crypto.enc.Hex);
-    let key = new CryptRSA(this.prvKey);
+    let key = new CryptRSA(this.prvKey, 2048);
     return key.encryptPrivate(encryptedMessage, 'base64');
   }
 
@@ -26,7 +26,7 @@ export class EncryptionService {
     var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
     var pubKey = window.localStorage.getItem("public");
     var decrypted;
-    let key = new CryptRSA(pubKey);    
+    let key = new CryptRSA(pubKey);
 
     decrypted = key.decryptPublic(messageEnc);
 

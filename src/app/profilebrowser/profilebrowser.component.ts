@@ -28,6 +28,7 @@ export class ProfilebrowserComponent implements OnInit {
       tempResult = JSON.parse(JSON.stringify(result));
 
       tempResult.forEach(element => {
+        console.log(element);
         var temp = new Streamer();
         temp.setName(element.user.naam);
         temp.setUrl(element.url) ;
@@ -42,6 +43,7 @@ export class ProfilebrowserComponent implements OnInit {
   }
 
   onClick(resultUrl:any){
+    // alert(resultUrl);
     this.dialogRef.close(resultUrl);
   }
 
