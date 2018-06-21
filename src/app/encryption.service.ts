@@ -29,7 +29,7 @@ export class EncryptionService {
     var decrypted;
     let key = new CryptRSA(this.pubKey);    
 
-    decrypted = key.decryptPublic(messageEnc);
+    decrypted = key.decryptPublic(messageEnc).toString();
 
     if(hash != decrypted){
       return false;
