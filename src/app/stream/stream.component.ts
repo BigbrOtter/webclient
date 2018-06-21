@@ -5,6 +5,8 @@ import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 import { HttpclientService } from '../httpclient.service';
 import { Certificate } from '../certificate';
 import {VgAPI} from 'videogular2/core';
+import { VgCoreModule } from 'videogular2/core';
+import {StreamidService} from '../streamid.service';
 
 @Component({
   selector: 'app-stream',
@@ -23,7 +25,7 @@ export class StreamComponent implements OnInit {
 
   @Input() id: string;
 
-  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
+  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService, private datapasser : StreamidService) {
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     this.src = "";
@@ -32,6 +34,10 @@ export class StreamComponent implements OnInit {
   ngOnInit() {
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
+  }
+
+  removeStream(){
+    this.src = "";
   }
 
   openDialog(){
@@ -54,7 +60,7 @@ export class StreamComponent implements OnInit {
           let tsUrl = baseurl + latestTS;
           this.httpTest.getTextFile(tsUrl)
             .subscribe( results2 => {
-              
+
               console.log(results2);
               let ehashUrl = tsUrl + '.ehash';
               this.httpTest.getTextFile(ehashUrl)
@@ -63,6 +69,9 @@ export class StreamComponent implements OnInit {
                 })
             })
         });
+
+      this.src = result.url;
+        this.datapasser.passStreamId(result.streamerId);
     });
   }
 }

@@ -3,6 +3,8 @@ import {ChatMessage} from '../chatmessage';
 import {EncryptionService} from '../encryption.service';
 import { HttpclientService } from '../httpclient.service';
 import { interval } from 'rxjs';
+import {StreamidService} from '../streamid.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-chat',
@@ -20,9 +22,17 @@ export class ChatComponent implements OnInit {
   tempMessage:ChatMessage;
   lastMessageTimer: string;
   messageArrayTemp: any[];
+  secondCounter:any;
 
-  constructor(private httpClient:HttpclientService) {
+  constructor(private httpClient:HttpclientService, private dataPasser: StreamidService) {
     this.crypto = new EncryptionService();
+    this.streamerid = null;
+    this.dataPasser.passStreamId$.subscribe(result =>{
+      this.streamerid = result;
+      if(result.length > 5){
+        this.getChat();
+      }
+    });
    }
 
 
@@ -33,7 +43,8 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.secondCounter = interval(1000);
+    //this.getChat();
   }
 
   getChat(){
@@ -41,10 +52,9 @@ export class ChatComponent implements OnInit {
     var resultArray;
     var streamId;
     //Get the new chat messages from the server
-    const secondCounter = interval(1000);
 
-    secondCounter.subscribe(n=>{
-      this.httpClient.getChat(this.lastMessageTimer, "5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result => {
+      this.secondCounter.subscribe(n=>{
+      this.httpClient.getChat(this.lastMessageTimer, this.streamerid, window.localStorage.getItem("cert")).subscribe(result => {
         resultArray = JSON.parse(JSON.stringify(result));
         this.messageArrayTemp = resultArray.chats;
         
@@ -65,13 +75,18 @@ export class ChatComponent implements OnInit {
   }
 
   sendChat(message: string){
-    this.tempMessage = new ChatMessage();
-    this.tempMessage.setMessage(message);
-    let messsageEnc = this.crypto.encyptMessage(this.tempMessage.message);
-    this.httpClient.postMessage(this.tempMessage.message, messsageEnc,"5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result =>{
-      console.log(result);
-    });
-    //this.getChat();
+    if(this.streamerid != null){
+      this.tempMessage = new ChatMessage();
+      this.tempMessage.setMessage(message);
+      let messsageEnc = this.crypto.encyptMessage(this.tempMessage.message);
+      this.httpClient.postMessage(this.tempMessage.message, messsageEnc, this.streamerid, window.localStorage.getItem("cert")).subscribe(result =>{
+      });
+    } else{
+      var temp = new ChatMessage();
+      temp.setMessage("Geen stream geselecteerd");
+      this.messages.push(temp);
+    }
+
   }
 
   setStreamerId(id: string) {
