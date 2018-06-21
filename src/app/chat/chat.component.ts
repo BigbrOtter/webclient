@@ -58,16 +58,18 @@ export class ChatComponent implements OnInit {
         resultArray = JSON.parse(JSON.stringify(result));
         this.messageArrayTemp = resultArray.chats;
         
-        if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){//integrity check
-          if(this.messageArrayTemp.length > 0){
-            this.lastMessageTimer = this.messageArrayTemp[this.messageArrayTemp.length -1].timestamp;
-            this.messageArrayTemp.forEach(element => {
-
-              this.tempMessage = new ChatMessage();
-              this.tempMessage.setMessage(element.message);
-              this.tempMessage.setFrom(element.name);
-              this.messages.push(this.tempMessage);
-            });
+        if(this.messageArrayTemp != undefined){
+          if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){//integrity check
+            if(this.messageArrayTemp.length > 0){
+              this.lastMessageTimer = this.messageArrayTemp[this.messageArrayTemp.length -1].timestamp;
+              this.messageArrayTemp.forEach(element => {
+  
+                this.tempMessage = new ChatMessage();
+                this.tempMessage.setMessage(element.message);
+                this.tempMessage.setFrom(element.name);
+                this.messages.push(this.tempMessage);
+              });
+            }
           }
         }
       });
