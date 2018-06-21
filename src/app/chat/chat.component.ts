@@ -15,9 +15,6 @@ export class ChatComponent implements OnInit {
   @Input() chatId: string;
   tempMessage:ChatMessage;
   messages: ChatMessage[] = [];
-  messages2: ChatMessage[] = [];
-  messages3: ChatMessage[] = [];
-  messages4: ChatMessage[] = [];
   crypto:EncryptionService;
   lastMessageTimer: string;
   messageArrayTemp: any[];
@@ -50,7 +47,6 @@ export class ChatComponent implements OnInit {
     secondCounter.subscribe(n=>{
       this.httpClient.getChat(this.lastMessageTimer, 1, window.localStorage.getItem("cert")).subscribe(result => {
         resultArray = JSON.parse(JSON.stringify(result));
-
         this.messageArrayTemp = resultArray.chats;
         
         if(this.crypto.checkMessage(this.messageArrayTemp, resultArray.signature)){//integrity check
@@ -62,23 +58,6 @@ export class ChatComponent implements OnInit {
               this.tempMessage.setMessage(element.message);
               this.tempMessage.setFrom(element.name);
               this.messages.push(this.tempMessage);
-
-              switch(this.chatId){
-                case "1" :{
-                  console.log("push 1");
-                  this.messages.push(this.tempMessage);
-
-                } break;
-                case "2":{
-                  this.messages2.push(this.tempMessage);
-                } break;
-                case "3":{
-                  this.messages3.push(this.tempMessage);
-                } break;
-                case "4":{
-                  this.messages4.push(this.tempMessage);
-                }break;
-              };
             });
           }
         }
