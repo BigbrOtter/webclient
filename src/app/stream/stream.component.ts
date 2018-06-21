@@ -54,7 +54,8 @@ export class StreamComponent implements OnInit {
           let tsUrl = baseurl + latestTS;
           this.httpTest.getTextFile(tsUrl)
             .subscribe( results2 => {
-              // console.log(results2);
+              
+              console.log(results2);
               let ehashUrl = tsUrl + '.ehash';
               this.httpTest.getTextFile(ehashUrl)
                 .subscribe(results3 => {
