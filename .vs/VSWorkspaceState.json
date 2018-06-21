@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\e2e\\src",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\chat",
-    "\\src\\app\\chat-tab",
     "\\src\\app\\classes",
     "\\src\\app\\dash",
     "\\src\\app\\nav",
     "\\src\\app\\profile",
+    "\\src\\app\\profilebrowser",
     "\\src\\app\\stream"
   ],
-  "SelectedNode": "\\src\\app\\stream\\stream.component.ts",
+  "SelectedNode": "\\src\\app\\chat\\chat.component.ts",
   "PreviewInSolutionExplorer": false
 }

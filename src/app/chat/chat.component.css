@@ -9,5 +9,14 @@
 .input{
     width: 100%;
     height: 100%;
+    overflow:hidden;
+}
+
+  .input button {
+    float:right;
+  }
+
+.example-full-width {
+  width:65%;
 }
 

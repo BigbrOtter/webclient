@@ -9,10 +9,12 @@
             [rowspan]="tile.rows"
             [style.background]="tile.color"
             class="textBox">
-            <div class="input" *ngIf="tile.isInput">
-                <input autocomplete="off" #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
-                <input name="submitmsg" type="submit"  id="submitmsg" value="Send" (click)="sendChat(message.value, this.chatId)" />
-            </div>
+          <div class="input" *ngIf="tile.isInput">
+            <mat-form-field class="example-full-width">
+              <input matInput autocomplete="off" #message name="usermsg" placeholder="" type="text" id="usermsg" size="63" />
+            </mat-form-field>
+            <button mat-button name="submitmsg" type="submit" id="submitmsg" (click)="sendChat(message.value, this.chatId)">Send</button>
+          </div>
 
             <div class="chatBox" *ngIf="!tile.isInput">
                     <ul>
