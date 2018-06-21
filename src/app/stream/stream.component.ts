@@ -23,13 +23,8 @@ export class StreamComponent implements OnInit {
   @Input() id: string;
 
   constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService) {
-<<<<<<< HEAD
-    this.comp = new ProfilebrowserComponent(dialog, this.id, this.id);
-    console.log(this.id)
-=======
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
->>>>>>> feature_chat_tabs
     //this.src = "";
     this.src = "http://37.97.244.58:8000/live/test6/index.m3u8";
   }
@@ -37,6 +32,7 @@ export class StreamComponent implements OnInit {
   ngOnInit() {
     //this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     //this.src = this.url;
+    
 
   }
 
