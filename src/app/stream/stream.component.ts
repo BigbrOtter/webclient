@@ -54,8 +54,8 @@ export class StreamComponent implements OnInit {
   checkHash(url) {
     this.src = url;
     let baseurl = url.substring(0, url.length - 10);
-    console.log("result.url: " + url);
-    console.log("baseurl: " + baseurl);
+    // console.log("result.url: " + url);
+    // console.log("baseurl: " + baseurl);
 
 
     this.httpTest.getTextFile(url)
@@ -63,18 +63,19 @@ export class StreamComponent implements OnInit {
         let manifestarray =  results.split('\n');
         let ml = manifestarray.length;
 
-        let latestTS = manifestarray[ml-2];
+        let latestTS = manifestarray[ml-6];
         let tsUrl = baseurl + latestTS;
+        // console.log("tsurl: " + tsUrl);
         this.httpTest.getTextFile(tsUrl)
           .subscribe( tsFile => {
-            console.log("tsfile typeof");
-            console.log(typeof(tsFile));
+            // console.log("tsfile typeof");
+            // console.log(typeof(tsFile));
             let ehashUrl = tsUrl + '.ehash';
+            // console.log("ehashurl: " + ehashUrl);
             this.httpTest.getTextFile(ehashUrl)
               .subscribe(eHash => {
-                console.log("ehash typeof");
-                console.log(typeof(eHash));
-                console.log("test");
+                // console.log("ehash");
+                // console.log(eHash);
                 console.log(this.encrypt.checkStream(tsFile, eHash))
                 // console.log(eHash);
               })

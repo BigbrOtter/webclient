@@ -33,7 +33,7 @@ export class EncryptionService {
 
     let key = new CryptRSA(this.pubKey);
 
-    decrypted = key.decryptPublic(messageEnc);
+    decrypted = key.decryptPublic(messageEnc).toString();
 
     if(hash != decrypted){
       return false;
@@ -43,13 +43,20 @@ export class EncryptionService {
   }
 
   checkStream(message:string, messageEnc:string){
-    var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
-    var decrypted;
+    var hash = crypto.SHA256(message).toString(crypto.enc.Hex);
+    let decrypted;
+    // console.log("messageenc: " + messageEnc);
+    // console.log("hash: " + hash);
 
+
+    // console.log("Message: " + message);
     let key = new CryptRSA(this.pubKey);
-
-    decrypted = key.decryptPublic(messageEnc).toString();
-
+    // console.log("key: " + this.pubKey);
+    // console.log(key);
+    // console.log(messageEnc.length);
+    // console.log(messageEnc);
+    decrypted = key.decryptPublic(messageEnc, 'base64');
+    // console.log("decrypted: " + decrypted);
     if(hash != decrypted){
       return false;
     }
