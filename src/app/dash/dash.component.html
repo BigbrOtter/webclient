@@ -8,16 +8,16 @@
           </div>
           <div class="chat" *ngIf="!card.isVideoCard">
             <mat-tab-group>
-              <mat-tab label="1">
+              <mat-tab class="tabs" label="1">
               <app-chat [chatId]="1"></app-chat>
               </mat-tab>
-              <mat-tab label="2">
+              <mat-tab class="tabs" label="2">
                 <app-chat [chatId]="2"></app-chat>
               </mat-tab>
-              <mat-tab label="3">
+              <mat-tab class="tabs" label="3">
                 <app-chat [chatId]="3"></app-chat>
               </mat-tab>
-              <mat-tab label="4">
+              <mat-tab class="tabs" label="4">
                 <app-chat [chatId]="4"></app-chat>
               </mat-tab>
             </mat-tab-group>

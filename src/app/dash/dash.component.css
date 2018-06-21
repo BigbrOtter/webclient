@@ -19,8 +19,11 @@
   text-align: left;
 }
 
-.chat mat-tab {
-  min-width:5px
+/deep/.mat-tab-label, /deep/.mat-tab-label-active {
+  min-width: 0 !important;
+  padding: 3px !important;
+  margin: 3px !important;
+  width: 40px;
 }
 
 .vid{

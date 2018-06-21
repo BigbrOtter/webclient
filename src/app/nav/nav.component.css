@@ -1,3 +1,5 @@
+
+
 .list a{
   float:left;
 }
@@ -9,11 +11,16 @@
 }
 
 .title{
-
+  margin-left:50px;
   float:left;
 }
 
-.me{
+.me button{
+  float:right !important;
+  margin-left: 100px;
+}
 
-  float:right;
+* {
+  font-family: Consolas /*Replace with your custom font*/, sans-serif !important;
+  /*Add the !important to overwrite all elements*/
 }
