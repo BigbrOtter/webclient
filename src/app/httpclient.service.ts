@@ -14,7 +14,6 @@ export class HttpclientService {
   url: string;
 
   constructor(private http: HttpClient) {
-
    }
 
    getStream(url:string){
@@ -56,7 +55,7 @@ export class HttpclientService {
       headers: new HttpHeaders({
         'cert': cert,
         'timeStamp': timeStamp,
-        'streamer': streamerId.toString()
+        'streamer': streamerId
       })
     };
 

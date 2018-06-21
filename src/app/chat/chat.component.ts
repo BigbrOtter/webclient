@@ -11,7 +11,7 @@ import { interval } from 'rxjs';
 })
 export class ChatComponent implements OnInit {
   isInput: boolean;
-  streamerid: string; // This servers as a stream ID, as username is unique
+  streamerid: string; // This servers as a stream ID
   @Input() chatId: string;
 
   temp:ChatMessage;
@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit {
     this.httpClient.postMessage(this.tempMessage.message, messsageEnc,"5b223a69c67a233550095361", window.localStorage.getItem("cert")).subscribe(result =>{
       console.log(result);
     });
-    this.getChat();
+   // this.getChat();
   }
 
   setStreamerId(id: string) {

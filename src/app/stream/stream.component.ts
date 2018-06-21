@@ -26,7 +26,6 @@ export class StreamComponent implements OnInit {
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     //this.src = "";
-    // this.src = "http://37.97.244.58:8000/live/test6/index.m3u8";
   }
 
   ngOnInit() {

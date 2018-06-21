@@ -2,7 +2,7 @@
 <mat-dialog-content>
 
     <ul class="streamList">
-        <li (click)="onClick(stream.url)" *ngFor="let stream of listOfStreams">
+        <li (click)="onClick(stream)" *ngFor="let stream of listOfStreams">
         <button mat-button> {{stream.name}} </button> 
         </li>
     </ul>
