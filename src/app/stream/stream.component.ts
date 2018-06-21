@@ -7,6 +7,7 @@ import { Certificate } from '../certificate';
 import {VgAPI} from 'videogular2/core';
 import { VgCoreModule } from 'videogular2/core';
 import {StreamidService} from '../streamid.service';
+import {EncryptionService} from "../encryption.service";
 
 @Component({
   selector: 'app-stream',
@@ -25,7 +26,7 @@ export class StreamComponent implements OnInit {
 
   @Input() id: string;
 
-  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService, private datapasser : StreamidService) {
+  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer, private httpTest: HttpclientService, private datapasser : StreamidService, private encrypt: EncryptionService) {
     // @ts-ignore ignore ERROR
     this.comp = new ProfilebrowserComponent(dialog, this.id, httpTest);
     this.src = "";
@@ -44,37 +45,45 @@ export class StreamComponent implements OnInit {
     this.dialogRef = this.dialog.open(ProfilebrowserComponent, {
       data: {id: this.id, src: this.src}
     }).afterClosed().subscribe(result =>{
-      // alert(result.url);
-      this.src = result.url;
-      let baseurl = result.url.substring(0, result.url.length - 10);
-      console.log("result.url: " + result.url);
-      console.log("baseurl: " + baseurl);
-
-
-      this.httpTest.getTextFile(result.url)
-        .subscribe(results => {
-          let manifestarray =  results.split('\n');
-          let ml = manifestarray.length;
-
-          let latestTS = manifestarray[ml-2];
-          let tsUrl = baseurl + latestTS;
-          this.httpTest.getTextFile(tsUrl)
-            .subscribe( results2 => {
-
-              console.log(results2);
-              let ehashUrl = tsUrl + '.ehash';
-              this.httpTest.getTextFile(ehashUrl)
-                .subscribe(results3 => {
-                  // console.log(results3);
-                })
-            })
-        });
-
+      this.checkHash(result.url);
       this.src = result.url;
         this.datapasser.passStreamId(result.streamerId);
     });
   }
+
+  checkHash(url) {
+    this.src = url;
+    let baseurl = url.substring(0, url.length - 10);
+    console.log("result.url: " + url);
+    console.log("baseurl: " + baseurl);
+
+
+    this.httpTest.getTextFile(url)
+      .subscribe(results => {
+        let manifestarray =  results.split('\n');
+        let ml = manifestarray.length;
+
+        let latestTS = manifestarray[ml-2];
+        let tsUrl = baseurl + latestTS;
+        this.httpTest.getTextFile(tsUrl)
+          .subscribe( tsFile => {
+            console.log("tsfile typeof");
+            console.log(typeof(tsFile));
+            let ehashUrl = tsUrl + '.ehash';
+            this.httpTest.getTextFile(ehashUrl)
+              .subscribe(eHash => {
+                console.log("ehash typeof");
+                console.log(typeof(eHash));
+                console.log("test");
+                console.log(this.encrypt.checkStream(tsFile, eHash))
+                // console.log(eHash);
+              })
+          })
+      });
+  }
 }
+
+
 // let manifestarray2 = [manifestarray[ml-6], manifestarray[ml-4], manifestarray[ml-2]];
 // console.log(manifestarray2);
 // manifestarray2.forEach((element) => {

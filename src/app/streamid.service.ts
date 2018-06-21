@@ -8,13 +8,13 @@ export class StreamidService {
 passStreamId$: Observable<any>;
 private passStreamIdSubject = new Subject<any>();
 
-  constructor() { 
+  constructor() {
     this.passStreamId$ = this.passStreamIdSubject.asObservable();
     this.passStreamId("H");
   }
 
   passStreamId(streamId:string){
-    console.log(streamId);
+    // console.log(streamId);
     this.passStreamIdSubject.next(streamId);
   }
 }

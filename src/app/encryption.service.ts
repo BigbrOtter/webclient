@@ -25,7 +25,24 @@ export class EncryptionService {
     return key.encryptPrivate(encryptedMessage, 'base64');
   }
 
+  // decryptHash
+
   checkMessage(message:string[], messageEnc:string){
+    var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
+    var decrypted;
+
+    let key = new CryptRSA(this.pubKey);
+
+    decrypted = key.decryptPublic(messageEnc);
+
+    if(hash != decrypted){
+      return false;
+    }
+
+    return true;
+  }
+
+  checkStream(message:string, messageEnc:string){
     var hash = crypto.SHA256(JSON.stringify(message)).toString(crypto.enc.Hex);
     var decrypted;
 
